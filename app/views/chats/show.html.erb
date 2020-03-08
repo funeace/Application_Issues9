@@ -1,0 +1,18 @@
+<h1>Chat room</h1>
+
+
+<div hidden class="row">
+    <%= @room.id %>
+</div>
+
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2" id="chats">
+      <%= render @chats %>      
+    </div>
+  </div>
+
+  <%= form_with model:@chat , remote: true do |f| %>
+    <%= f.text_field :message %>
+    <%= f.hidden_field :user_id, :value => @user.id %>
+    <%= f.hidden_field :room_id, :value => @room.id %>
+  <% end %>

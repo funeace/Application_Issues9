@@ -1,3 +1,17 @@
+
+<!-- なんかできた -->
+      <% if @user != current_user %>
+        <% if (@user.relations & current_user.relations).empty? %> 
+          <div class="row">
+            <%= link_to "チャットする",make_room_chat_path(user_id: @user.id),method: :post %>
+          </div>
+        <% else %>
+          <div class="row">
+            <%= link_to "チャットする",chat_path(@room) %>
+          </div>
+        <% end %>
+      <% end %>
+
 <div class="row">
   <!-- プロフィール画面 -->
   <%= render 'layouts/sidebar',user: @user,book: @book %>

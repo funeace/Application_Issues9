@@ -1,0 +1,4 @@
+// $("#chats").html("<%= j(render partial: 'chats/chat', locals: { chat: @message } ) %>");
+// $("#chats").html("<%= j(render partial: 'chats/chat', locals: { chat: @message } ) %>");
+$("#chats").append("<%= j(render partial: 'chats/chat', locals: { chat: @message } ) %>");
+$("#chat_message").val('');

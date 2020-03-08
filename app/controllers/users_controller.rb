@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     # 他人のページにも遷移させることがあるため、current_userではなくparams[:id]
     @user = User.find(params[:id])
     @book = Book.new
+    if  (@user.relations & current_user.relations).empty?
+    else
+      @room = (@user.relations & current_user.relations)[0]
+    end
 
     #find_by findだと自分のid user_idに紐づける
     #booksはmodelで指定したhas_manyの値

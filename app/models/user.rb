@@ -12,6 +12,13 @@ class User < ApplicationRecord
   #bookモデルと1:多の関係を作る（has_manyが1のほうで、 belongs_toが多のほう）
   has_many :books, dependent: :destroy
 
+  has_many :user_rooms, dependent: :destroy
+
+  # こいつを見ていけば内容がわかる？
+  has_many :relations, through: :user_rooms,source: :room
+
+  has_many :chats, dependent: :destroy
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
